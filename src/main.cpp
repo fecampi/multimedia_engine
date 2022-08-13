@@ -2,9 +2,14 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    sf::ContextSettings settings;
+    settings.antialiasingLevel = 8;
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Multimedia Engine", sf::Style::Default, settings);
+
+    // rectangle
+    sf::RectangleShape rectangle(sf::Vector2f(500.f, 500.f));
+    rectangle.setFillColor(sf::Color(100, 250, 50));
+    rectangle.setPosition(200.f, 200.f);
 
     while (window.isOpen())
     {
@@ -16,7 +21,7 @@ int main()
         }
 
         window.clear();
-        window.draw(shape);
+        window.draw(rectangle);
         window.display();
     }
 
