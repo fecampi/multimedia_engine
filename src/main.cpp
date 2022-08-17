@@ -1,15 +1,19 @@
 #include <SFML/Graphics.hpp>
 
+sf::RectangleShape drawRectangle(int x, int y, int width, int height)
+{
+    // rectangle
+    sf::RectangleShape rectangle(sf::Vector2f(width, height));
+    rectangle.setFillColor(sf::Color(100, 250, 50));
+    rectangle.setPosition(x, y);
+    return rectangle;
+}
+
 int main()
 {
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
     sf::RenderWindow window(sf::VideoMode(1280, 720), "Multimedia Engine", sf::Style::Default, settings);
-
-    // rectangle
-    sf::RectangleShape rectangle(sf::Vector2f(500.f, 500.f));
-    rectangle.setFillColor(sf::Color(100, 250, 50));
-    rectangle.setPosition(200.f, 200.f);
 
     while (window.isOpen())
     {
@@ -21,7 +25,9 @@ int main()
         }
 
         window.clear();
-        window.draw(rectangle);
+        window.draw(drawRectangle(200, 200, 500, 100));
+        window.draw(drawRectangle(200, 400, 500, 100));
+
         window.display();
     }
 
